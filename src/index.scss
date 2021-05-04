@@ -1,0 +1,37 @@
+$color-todo__sidebar: #E5E5E5;
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  list-style: none;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-top: 50px;
+}
+
+.todo {
+  max-width: 529px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 1px 2px 3px #F1F1F1;
+}
+
+.todo__sidebar {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.2px;
+  flex-basis: 199px;
+  background-color: $color-todo__sidebar;
+  border-right: 1px solid #F1F1F1;
+  box-sizing: border-box;
+  padding: 48px 20px 190px 20px;
+}

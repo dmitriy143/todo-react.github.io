@@ -1,0 +1,19 @@
+.todo__item {
+  display: flex;
+  align-items: center;
+  padding: 11px 10px;
+  cursor: pointer;
+
+  &-active {
+
+    background: #FFFFFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  i {
+    display: flex;
+    padding-right: 9px;
+    padding-bottom: 2px;
+  }
+}
