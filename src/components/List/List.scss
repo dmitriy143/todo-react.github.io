@@ -1,7 +1,15 @@
-.todo__item {
+.list {
+  margin-bottom: 17px;
+
+  &--bottom {
+    margin-bottom: 27px;
+  }
+}
+
+.list__item {
   display: flex;
   align-items: center;
-  padding: 11px 10px;
+  padding: 11px 10px 10px 10px;
   cursor: pointer;
 
   &-active {
@@ -11,9 +19,63 @@
     border-radius: 4px;
   }
 
-  i {
+  .list__item-container {
     display: flex;
     padding-right: 9px;
     padding-bottom: 2px;
+  }
+
+  &:hover path {
+    stroke: #000;
+  }
+
+  &:hover .list__name {
+    color: #000;
+  }
+}
+
+.badge {
+  width: 10px;
+  height: 10px;
+  margin-left: 2px;
+  border-radius: 50%;
+
+  &--green {
+    background-color: #42B883;
+  }
+
+  &--blue {
+    background-color: #64C4ED;
+  }
+
+  &--pink {
+    background-color: #FFBBCC;
+  }
+
+  &--light-green {
+    background-color: #B6E6BD;
+  }
+
+  &--gray {
+    background-color: #C9D1D3;
+  }
+}
+
+.list__name {
+  max-width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &--add-button-text {
+    font-family: Lato, sans-serif;
+    font-style: normal;
+    // font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+
+    letter-spacing: 0.15px;
+
+    color: #767676;
   }
 }

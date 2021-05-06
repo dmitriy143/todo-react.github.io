@@ -1,18 +1,21 @@
 import React from 'react';
+import classNames from 'classnames';
+
 import './List.scss';
 
-function List({ items }) {
+function List({ items, classBottom }) {
   return (
-    <ul className="todo__list">
-      {items.map((item) => (
-        <li className="todo__item">
-          <i>
-            <img src={item.icon} alt="List icon" />
+    <ul className={`todo__list list ${classBottom ? classBottom : ''}`}>
+      {items.map((item, index) => (
+        <li key={index} className={classNames('list__item', { 'list__item-active': item.active })}>
+          <i className="list__item-container">
+            {item.icon ? item.icon : <i className={`badge badge--${item.color}`}></i>}
           </i>
-          <span>{item.name}</span>
+          <span className={classNames('list__name', `list__name--${item.className}`)} >{item.name}</span>
         </li>
-      ))}
-    </ul>
+      ))
+      }
+    </ul >
   )
 }
 
