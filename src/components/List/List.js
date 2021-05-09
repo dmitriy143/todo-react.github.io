@@ -3,9 +3,9 @@ import classNames from 'classnames';
 
 import './List.scss';
 
-function List({ items, classBottom }) {
+function List({ items, classBottom, onClick }) {
   return (
-    <ul className={`todo__list list ${classBottom ? classBottom : ''}`}>
+    <ul onClick={onClick} className={`todo__list list ${classBottom ? classBottom : ''}`}>
       {items.map((item, index) => (
         <li key={index} className={classNames('list__item', { 'list__item-active': item.active })}>
           <i className="list__item-container">

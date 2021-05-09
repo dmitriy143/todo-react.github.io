@@ -1,6 +1,6 @@
 import React from 'react';
 import List from './components/List/List.js';
-import AddListButton from './components/List/AddListButton.js';
+import AddList from './components/AddListButton/AddList.js';
 
 import allTasks from './assets/img/allTasks.svg';
 
@@ -40,8 +40,7 @@ function App() {
           }
         ]}
           classBottom={'list--bottom'} />
-
-        <AddListButton />
+        <AddList />
       </div>
       <div className="todo__tasks"></div>
     </div>
