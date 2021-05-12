@@ -1,11 +1,38 @@
-.add-list__popap {
+.add-list {
+  position: relative;
+}
+
+.add-list__popap-container {
   position: absolute;
   width: 235px;
-  height: 148px;
-  left: 28px;
-  top: 353px;
+  left: 10px;
+  top: 40px;
+}
+
+.add-list__popap {
+  position: relative;
+  box-sizing: border-box;
+  padding: 18px;
 
   background: #FFFFFF;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+}
+
+.add-list__popup-close-btn {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  bottom: 30.5%;
+  cursor: pointer;
+}
+
+.add-list__button {
+  margin-top: 12px;
+}
+
+.add-list__color {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

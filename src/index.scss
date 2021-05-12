@@ -35,4 +35,46 @@ body {
   border-right: 1px solid #F1F1F1;
   box-sizing: border-box;
   padding: 48px 20px 160px 20px;
+
+}
+
+.field {
+  background: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 100%;
+
+  &:focus {
+    border-color: #dbdbdb;
+  }
+}
+
+.button {
+  font-family: Lato, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+  letter-spacing: 0.15px;
+
+  color: #FFFFFF;
+
+  width: 100%;
+  padding: 10px 10px;
+  background: #4DD599;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: darken($color: #4DD599, $amount: 6%);
+  }
+
+  &:active {
+    background: darken($color: #4DD599, $amount: 10%);
+  }
 }
