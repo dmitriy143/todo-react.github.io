@@ -9,10 +9,18 @@ import allTasks from './assets/img/allTasks.svg';
 
 function App() {
   const [lists, setLists] = useState(DB.lists.map(item => {
-    item.color = DB.colors.filter(color => color.id === item.colorId)[0].name
+    item.color = DB.colors.find(color => color.id === item.colorId).name
     return item;
   }));
-  // console.log(lists)
+
+  const onAddList = (obj) => {
+    const newList = [
+      ...lists,
+      obj
+    ]
+    setLists(newList)
+  }
+
   return (
     <div className="todo">
       <div className="todo__sidebar">
@@ -23,10 +31,12 @@ function App() {
             active: true
           }
         ]} />
-        <List items={lists}
+        <List items={lists} onRemove={(obj) => {
+          console.log(obj)
+        }}
           classBottom={'list--bottom'}
           isRemovable />
-        <AddList colors={DB.colors} />
+        <AddList onAdd={onAddList} colors={DB.colors} />
       </div>
       <div className="todo__tasks"></div>
     </div>

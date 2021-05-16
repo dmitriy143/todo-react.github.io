@@ -2,9 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 import Badge from '../Badge/Badge.js';
 
+import removeSvg from '../../assets/img/remove.svg'
+
 import './List.scss';
 
-function List({ items, classBottom, onClick }) {
+function List({ items, isRemovable, classBottom, onClick, onRemove }) {
   return (
     <ul onClick={onClick} className={`todo__list list ${classBottom ? classBottom : ''}`}>
       {items.map((item, index) => (
@@ -13,6 +15,7 @@ function List({ items, classBottom, onClick }) {
             {item.icon ? item.icon : <Badge color={item.color} />}
           </i>
           <span className={classNames('list__name', { [`list__name--${item.classButton}`]: item.classButton })} >{item.name}</span>
+          {isRemovable && <img onClick={() => onRemove(item)} className="list__remove-icon" src={removeSvg} alt="remove icon" />}
         </li>
       ))
       }

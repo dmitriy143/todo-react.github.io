@@ -7,10 +7,31 @@ import './AddList.scss';
 import closePopup from '../../assets/img/close-popup.svg'
 
 
-function AddListButton({ colors }) {
+function AddListButton({ colors, onAdd }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [selectedColor, selectColor] = useState(colors[0].id);
   const [inputValue, setInputValue] = useState('');
+
+  const onClose = () => {
+    setVisiblePopup(false)
+    setInputValue('')
+    selectColor(colors[0].id)
+  }
+
+  const addList = () => {
+    if (!inputValue) {
+      alert('Введите название папки')
+      return
+    }
+    const color = colors.find(color => color.id === selectedColor).name
+    onAdd({
+      "id": Math.random(),
+      "name": inputValue,
+      "colorId": selectedColor,
+      color
+    })
+    onClose()
+  }
 
   return (
     <div className="add-list">
@@ -29,7 +50,7 @@ function AddListButton({ colors }) {
       {visiblePopup &&
         (<div className="add-list__popap-container">
           <div className="add-list__popap">
-            <img onClick={() => setVisiblePopup(false)} src={closePopup} alt="close" className="add-list__popup-close-btn" />
+            <img onClick={onClose} src={closePopup} alt="close" className="add-list__popup-close-btn" />
 
             <input
               value={inputValue}
@@ -48,7 +69,7 @@ function AddListButton({ colors }) {
                 />
               ))}
             </div>
-            <button className="add-list__button button">Добавить</button>
+            <button onClick={addList} className="add-list__button button">Добавить</button>
           </div>
         </div>
         )}
