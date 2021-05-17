@@ -12,6 +12,7 @@ function List({ items, isRemovable, classBottom, onClick, onRemove }) {
       onRemove(item)
     }
   }
+
   return (
     <ul onClick={onClick} className={`todo__list list ${classBottom ? classBottom : ''}`}>
       {items.map((item, index) => (
