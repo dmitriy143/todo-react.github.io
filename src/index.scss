@@ -16,7 +16,7 @@ body {
 }
 
 .todo {
-  max-width: 529px;
+  max-width: 746px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -77,4 +77,23 @@ body {
   &:active {
     background: darken($color: #4DD599, $amount: 10%);
   }
+}
+
+// правая часть
+.todo__tasks {
+  flex-grow: 1;
+  // text-align: center;
+}
+
+.tasks {
+  padding: 58px 56px 160px;
+}
+
+.tasks__title {
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 39px;
+  color: #64C4ED;
 }

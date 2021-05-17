@@ -38,7 +38,11 @@ function App() {
           isRemovable />
         <AddList onAdd={onAddList} colors={DB.colors} />
       </div>
-      <div className="todo__tasks"></div>
+      <div className="todo__tasks">
+        <div className="todo__warpper-tasks tasks">
+          <h2 className="tasks__title">Фронтенд</h2>
+        </div>
+      </div>
     </div>
   );
 }
