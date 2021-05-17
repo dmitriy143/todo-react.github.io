@@ -7,6 +7,11 @@ import removeSvg from '../../assets/img/remove.svg'
 import './List.scss';
 
 function List({ items, isRemovable, classBottom, onClick, onRemove }) {
+  const removeList = item => {
+    if (window.confirm('Вы действительно хотите удадить список?')) {
+      onRemove(item)
+    }
+  }
   return (
     <ul onClick={onClick} className={`todo__list list ${classBottom ? classBottom : ''}`}>
       {items.map((item, index) => (
@@ -15,7 +20,7 @@ function List({ items, isRemovable, classBottom, onClick, onRemove }) {
             {item.icon ? item.icon : <Badge color={item.color} />}
           </i>
           <span className={classNames('list__name', { [`list__name--${item.classButton}`]: item.classButton })} >{item.name}</span>
-          {isRemovable && <img onClick={() => onRemove(item)} className="list__remove-icon" src={removeSvg} alt="remove icon" />}
+          {isRemovable && <img onClick={() => removeList(item)} className="list__remove-icon" src={removeSvg} alt="remove icon" />}
         </li>
       ))
       }
