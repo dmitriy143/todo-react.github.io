@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import List from './components/List/List.js';
 import AddList from './components/AddListButton/AddList.js';
+import Tasks from './components/Tasks/Tasks.js';
 
 import DB from './assets/db.json'
 
@@ -20,6 +21,10 @@ function App() {
     ]
     setLists(newList)
   }
+  let urlt = 'http://todo-react';
+  fetch(urlt)
+    .then(data => data)
+    .then(data => console.log(data))
 
   return (
     <div className="todo">
@@ -39,9 +44,7 @@ function App() {
         <AddList onAdd={onAddList} colors={DB.colors} />
       </div>
       <div className="todo__tasks">
-        <div className="todo__warpper-tasks tasks">
-          <h2 className="tasks__title">Фронтенд</h2>
-        </div>
+        <Tasks />
       </div>
     </div>
   );
