@@ -1,4 +1,6 @@
 import React from 'react';
+
+import axios from 'axios';
 import classNames from 'classnames';
 import Badge from '../Badge/Badge.js';
 
@@ -9,7 +11,10 @@ import './List.scss';
 function List({ items, isRemovable, classBottom, onClick, onRemove }) {
   const removeList = item => {
     if (window.confirm('Вы действительно хотите удадить список?')) {
-      onRemove(item)
+      // onRemove(item)
+      axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
+        onRemove(item.id);
+      });
     }
   }
 
@@ -17,9 +22,10 @@ function List({ items, isRemovable, classBottom, onClick, onRemove }) {
     <ul onClick={onClick} className={`todo__list list ${classBottom ? classBottom : ''}`}>
       {items.map((item, index) => (
         <li key={index} className={classNames('list__item', { 'list__item-active': item.active })}>
-          <i className="list__item-container">
+          {/* <i className="list__item-container">
             {item.icon ? item.icon : <Badge color={item.color} />}
-          </i>
+          </i> */}
+          <i className="list__item-container">{item.icon ? item.icon : <Badge color={item.color.name} />}</i>
           <span className={classNames('list__name', { [`list__name--${item.classButton}`]: item.classButton })} >{item.name}</span>
           {isRemovable && <img onClick={() => removeList(item)} className="list__remove-icon" src={removeSvg} alt="remove icon" />}
         </li>

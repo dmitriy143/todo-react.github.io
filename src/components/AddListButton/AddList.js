@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import Badge from '../Badge/Badge.js';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import List from '../List/List.js';
+import Badge from '../Badge/Badge.js';
 
 import './AddList.scss';
 
@@ -9,8 +10,15 @@ import closePopup from '../../assets/img/close-popup.svg'
 
 function AddListButton({ colors, onAdd }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const [selectedColor, selectColor] = useState(colors[0].id);
+  const [selectedColor, selectColor] = useState(3);
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    if (Array.isArray(colors)) {
+      selectColor(colors[0].id);
+    }
+  }, [colors]);
 
   const onClose = () => {
     setVisiblePopup(false)
@@ -23,14 +31,30 @@ function AddListButton({ colors, onAdd }) {
       alert('Введите название папки')
       return
     }
-    const color = colors.find(color => color.id === selectedColor).name
-    onAdd({
-      "id": Math.random(),
-      "name": inputValue,
-      "colorId": selectedColor,
-      color
-    })
-    onClose()
+    // const color = colors.find(color => color.id === selectedColor).name
+    // onAdd({
+    //   "id": Math.random(),
+    //   "name": inputValue,
+    //   "colorId": selectedColor,
+    //   color
+    // })
+    // onClose()
+
+    setIsLoading(true);
+    axios
+      .post('http://localhost:3001/lists', {
+        name: inputValue,
+        colorId: selectedColor
+      })
+      .then(({ data }) => {
+        const color = colors.filter(c => c.id === selectedColor)[0].name;
+        const listObj = { ...data, color: { name: color } };
+        onAdd(listObj);
+        onClose();
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   return (
@@ -69,7 +93,7 @@ function AddListButton({ colors, onAdd }) {
                 />
               ))}
             </div>
-            <button onClick={addList} className="add-list__button button">Добавить</button>
+            <button onClick={addList} className="add-list__button button">{isLoading ? 'Добавление...' : 'Добавить'}</button>
           </div>
         </div>
         )}
